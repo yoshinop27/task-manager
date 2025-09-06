@@ -3,7 +3,7 @@ import Note from '../models/notes.js'
 
 export const getAllNotes = async (req,res) => {
     try {
-        const notes = await Note.find()
+        const notes = await Note.find().sort({createdAt: -1}) // newest first
         res.status(200).json(notes)
     } catch (error) {
         console.error('Error in getAllnotes controller:', error)
